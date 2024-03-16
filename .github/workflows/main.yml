@@ -16,8 +16,8 @@ jobs:
       - name: Deploy to VM
         uses: actions/ssh@v3
         with:
-          host: "20.55.97.67"
-          username: "azureuser"
+          host: 20.55.97.67
+          username: azureuser
           key: "secrets.SSH_PRIVATE_KEY"
           script: |
             # Replace these commands with your actual deployment steps
