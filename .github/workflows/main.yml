@@ -20,7 +20,7 @@ jobs:
           username: azureuser
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Replace 'your_project_directory' with the actual directory on VM
+      
            
             # Assuming Node.js and PM2 are installed on the VM
             pm2 start index.js
