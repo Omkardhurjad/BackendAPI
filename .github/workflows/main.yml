@@ -16,8 +16,8 @@ jobs:
       - name: Deploy to VM
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: 20.55.97.67
-          username: azureuser
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER_NAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
       
@@ -26,4 +26,4 @@ jobs:
             pm2 start index.js
 
       - name: Verify Deployment (Optional)
-        run: ssh azureuser@20.55.97.67 -p 22 "pm2 list"
+        run: ssh ${{ secrets.HOST }}@${{ secrets.USER_NAME }} -p 22 "pm2 list"
