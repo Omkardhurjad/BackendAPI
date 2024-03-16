@@ -18,12 +18,13 @@ jobs:
         with:
           host: 20.55.97.67
           username: azureuser
-          key: "secrets.SSH_PRIVATE_KEY"
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  # Replace with actual secret name
           script: |
-            # Replace these commands with your actual deployment steps
-            # (e.g., copy files, run server)
-            cd index.js  # Replace with your directory on server
-            node index.js  # Assuming you use pm2 for process management
+            # Replace with generic deployment commands (assuming SCP for file transfer)
+            scp -i ~/.ssh/azureuser index.js/* user@host:/target/directory  # Adjust target directory path
+
+            # Replace with commands to start your server process on the VM
+            ssh -i ~/.ssh/id_rsa_vm user@host 'nohup node index.js &'  # Assuming Node.js and nohup for background execution
 
       - name: Notify on failure
         uses: actions/github-script@v6
