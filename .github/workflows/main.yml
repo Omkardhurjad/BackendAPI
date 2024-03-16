@@ -23,7 +23,7 @@ jobs:
       
            
             # Assuming Node.js and PM2 are installed on the VM
-            pm2 start index.js
+            node index.js
 
       - name: Verify Deployment (Optional)
-        run: ssh ${{ secrets.HOST }}@${{ secrets.USER_NAME }} -p 22 "pm2 list"
+        run: ssh ${{ secrets.HOST }}@${{ secrets.USER_NAME }} 
