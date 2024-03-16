@@ -23,7 +23,7 @@ jobs:
             # Replace these commands with your actual deployment steps
             # (e.g., copy files, run server)
             cd index.js  # Replace with your directory on server
-            pm2 start index.js  # Assuming you use pm2 for process management
+            node index.js  # Assuming you use pm2 for process management
 
       - name: Notify on failure
         uses: actions/github-script@v6
