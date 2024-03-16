@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Deploy to VM (Replace with your deployment steps)
+      - name: Deploy to VM
         uses: actions/ssh@v3
         with:
           host: "20.55.97.67"
