@@ -10,20 +10,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Install dependencies
         run: npm install
 
       - name: Deploy to VM
-        uses: actions/ssh@v3
-        with:
-          host: "20.55.97.67"
-          username: "azureuser"
-          key: "secrets.SSH_PRIVATE_KEY"
-          script: |
-            # Replace these commands with your actual deployment steps
-            # (e.g., copy files, run server)
+        run: |
+          ssh azureuser@20.55.97.67 <<EOF
             cd index.js  # Replace with your directory on server
             pm2 start index.js  # Assuming you use pm2 for process management
+          EOF
 
       - name: Notify on failure
         uses: actions/github-script@v6
